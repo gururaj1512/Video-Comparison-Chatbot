@@ -1,0 +1,29 @@
+# Python artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Local env files
+.env
+.env.*
+
+# Packaging
+build/
+dist/
+*.egg-info/
+
+# Tests
+.pytest_cache/
+
+# Coverage
+.coverage
+htmlcov/
