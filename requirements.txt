@@ -1,0 +1,34 @@
+# Core Framework
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0
+pydantic>=2.5.0
+pydantic-settings>=2.0.0
+python-dotenv>=1.0.0
+python-multipart>=0.0.9
+
+# RAG & LLM (LangChain + Groq)
+langchain>=0.3.0
+langchain-groq>=0.2.0
+langchain-community>=0.3.0
+langchain-core>=0.3.0
+
+# Embeddings (Local, Open-Source)
+sentence-transformers>=3.0.0
+torch>=2.0.0
+
+# Vector Database (Qdrant)
+qdrant-client>=1.12.0
+
+# Transcript Extraction
+youtube-transcript-api>=1.0.0
+yt-dlp>=2024.0.0
+faster-whisper>=1.0.0
+
+# Caching & Background Jobs
+redis>=5.0.0
+arq>=0.26.0
+
+# Utilities
+aiofiles>=24.0.0
+httpx>=0.27.0
+sse-starlette>=2.0.0
