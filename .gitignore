@@ -9,6 +9,8 @@ venv/
 ENV/
 env/
 
+ai-work/
+
 # Jupyter
 .ipynb_checkpoints/
 
