@@ -384,7 +384,7 @@ function App() {
     `Suggest improvements for Video B based on Video A.`,
     `What is the engagement rate of each video?`
   ] : [
-    `Compare Rick Astley Official & Instagram Reel: https://www.youtube.com/watch?v=dQw4w9WgXcQ & https://www.instagram.com/p/C-iQzNMy4_J/`,
+    `Compare Anthony Gordon to barca youtube video with instagram: https://www.youtube.com/watch?v=X5nMfrRrCgo & https://www.instagram.com/p/DY1ue54Ijwt/`,
     `Why does YouTube have more views than Instagram Reels?`,
   ];
 
