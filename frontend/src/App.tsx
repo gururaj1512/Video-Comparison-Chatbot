@@ -52,6 +52,7 @@ function App() {
   const [currentStatus, setCurrentStatus] = useState<string | null>(null);
   const [isStreaming, setIsStreaming] = useState(false);
   const [highlightedCard, setHighlightedCard] = useState<string | null>(null);
+  const [isMobileChatOpen, setIsMobileChatOpen] = useState(false);
   
   const chatEndRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -383,7 +384,7 @@ function App() {
     `Suggest improvements for Video B based on Video A.`,
     `What is the engagement rate of each video?`
   ] : [
-    `Compare Rick Astley Official & Michael Jackson - Billie Jean: https://www.youtube.com/watch?v=dQw4w9WgXcQ & https://www.youtube.com/watch?v=Zi_XLOBDo_Y`,
+    `Compare Rick Astley Official & Instagram Reel: https://www.youtube.com/watch?v=dQw4w9WgXcQ & https://www.instagram.com/p/C-iQzNMy4_J/`,
     `Why does YouTube have more views than Instagram Reels?`,
   ];
 
@@ -398,7 +399,7 @@ function App() {
           <svg className="logo-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
           </svg>
-          <span className="logo-text text-gradient-cyan">CreatorLens | RAG Video Analyzer</span>
+          <span className="logo-text text-gradient-cyan">AG RAG Video Analyzer</span>
         </div>
         <div className="session-info">
           {sessionId && (
@@ -616,7 +617,7 @@ function App() {
         </section>
 
         {/* Right Panel: Chat Thread */}
-        <section className="chat-panel">
+        <section className={`chat-panel ${isMobileChatOpen ? 'mobile-open' : ''}`}>
           <div className="chat-header">
             <span className="chat-header-title">RAG Context Chat</span>
             <span className="session-badge">{messages.length} Messages</span>
@@ -722,6 +723,31 @@ function App() {
           </div>
         </section>
       </div>
+
+      {/* Mobile chat backdrop */}
+      {isMobileChatOpen && (
+        <div className="mobile-chat-backdrop visible" onClick={() => setIsMobileChatOpen(false)} />
+      )}
+
+      {/* Floating chat button — visible only on mobile via CSS */}
+      <button 
+        className={`chat-fab ${isMobileChatOpen ? 'active' : ''}`}
+        onClick={() => setIsMobileChatOpen(prev => !prev)}
+        aria-label={isMobileChatOpen ? 'Close chat' : 'Open chat'}
+      >
+        {isMobileChatOpen ? (
+          <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        ) : (
+          <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+          </svg>
+        )}
+        {messages.length > 0 && !isMobileChatOpen && (
+          <span className="chat-fab-badge">{messages.length}</span>
+        )}
+      </button>
     </>
   );
 }
